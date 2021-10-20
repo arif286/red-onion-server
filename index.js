@@ -23,9 +23,10 @@ client.connect((err) => {
     const foodCollection = client.db("redOnion").collection("foods");
     const orderCollection = client.db("redOnion").collection("order");
     app.post('/addFood', (req, res) => {
-        foodCollection.insertOne(req.body)
+        foodCollection.insertMany(req.body)
             .then(result => {
                 console.log(result)
+                res.send(result);
             })
     });
 
